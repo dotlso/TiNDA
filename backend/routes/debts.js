@@ -25,15 +25,40 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id/pay", (req, res) => {
-    db.run(
-        "UPDATE debts SET status='paid' WHERE id=?",
-        [req.params.id],
-        function (err) {
-            if (err) return res.status(500).json({ error: err.message });
-            if (this.changes === 0) return res.status(404).json({ error: "Debt not found" });
-            res.json({ message: "Debt marked as paid" });
-        }
-    );
+    db.serialize(() => {
+        db.run("BEGIN TRANSACTION");
+
+        // Update debt status to paid
+        db.run(
+            "UPDATE debts SET status='paid' WHERE id=?",
+            [req.params.id],
+            function (err) {
+                if (err) {
+                    db.run("ROLLBACK");
+                    return res.status(500).json({ error: err.message });
+                }
+                if (this.changes === 0) {
+                    db.run("ROLLBACK");
+                    return res.status(404).json({ error: "Debt not found" });
+                }
+
+                // Update the corresponding sale's payment_type to 'paid'
+                db.run(
+                    "UPDATE sales SET payment_type='paid' WHERE id = (SELECT sale_id FROM debts WHERE id=?)",
+                    [req.params.id],
+                    function (err) {
+                        if (err) {
+                            db.run("ROLLBACK");
+                            return res.status(500).json({ error: err.message });
+                        }
+
+                        db.run("COMMIT");
+                        res.json({ message: "Debt marked as paid" });
+                    }
+                );
+            }
+        );
+    });
 });
 
 router.delete("/:id", (req, res) => {

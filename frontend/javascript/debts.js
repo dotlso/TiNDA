@@ -51,7 +51,10 @@ async function payDebt() {
     const newAmount = debtor.amount - payment;
 
     if (newAmount === 0) {
-        // fully paid — delete the debt
+        // fully paid — update sale to paid and delete the debt
+        await fetch(`${API}/debts/${currentDebtorId}/pay`, {
+            method: "PUT"
+        });
         await fetch(`${API}/debts/${currentDebtorId}`, {
             method: "DELETE"
         });
