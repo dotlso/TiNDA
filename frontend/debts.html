@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiNDA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style_debts.css">
+</head>
+</style>
+<body>
+
+  <a href="index.html" class="back-btn">
+    <i class='bx bx-arrow-back'></i>
+    Back
+</a>  
+
+<div class="container">
+    <div class="main-content">
+
+        <h1 class="hd">Debts</h1>
+
+        <div id="debt-container">
+            <div class="debt-header">
+                <div>Name</div>
+                <div>Transaction</div>
+                <div>Debt</div>
+            </div>
+            <div id="debt-list"></div>
+        </div>
+
+    </div>
+</div>
+
+    <div id="payDebt-modal" class="modal">
+    <div class="modal-content">
+        <h2>Pay Debt</h2>
+        <input type="number" id="pay-debt" placeholder="Payment">
+        <div class="modal-buttons">
+        <button class="ConfirmBtn"onclick="payDebt()">Confirm</button>
+        <button class="CancelBtn"onclick="closePayDebtModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="addDebt-modal" class="modal">
+    <div class="modal-content">
+        <h2>Add Debt</h2>
+        <input type="number" id="add-debt" placeholder="Additional Debt">
+        <div class="modal-buttons">
+        <button class="ConfirmBtn" onclick="addDebt()">Confirm</button>
+        <button class="CancelBtn"onclick="closeAddDebtModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="removeDebtor-modal" class="modal">
+    <div class="modal-content">
+        <h3>Do you want to remove this debtor?</h3>
+        <button class="ConfirmBtn"onclick="removeDebtor()">Remove</button>
+        <button class="CancelBtn"onclick="closeRemoveDebtorModal()">Cancel</button>
+    </div>
+</div>
+
+
+
+    <script src="javascript/debts.js"></script>
+</body>
+</html>

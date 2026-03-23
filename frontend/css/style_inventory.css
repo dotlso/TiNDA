@@ -1,0 +1,416 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff6ec;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    color: #556b52;
+}
+
+/* ── Layout ── */
+.container {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hd {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #556b52;
+    margin-top: 10px;
+}
+
+/* ── Search ── */
+.search-form {
+    width: 900px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 2px solid #b43b3b;
+    border-radius: 30px;
+    padding: 8px 15px;
+}
+
+.search-icon {
+    font-size: 20px;
+    color: #b43b3b;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* ── Category filters ── */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    width: 900px;
+}
+
+.filter-btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 2px solid #b43b3b;
+    background: white;
+    color: #b43b3b;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #b43b3b;
+    color: white;
+}
+
+/* ── List container ── */
+#list-container {
+    width: 900px;
+    background: #b43b3b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 2px rgb(199, 198, 198);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 220px);
+}
+
+#inventory-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* ── List rows ── */
+.list-row,
+.header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1.5fr;
+    align-items: center;
+    background: #f6ecec;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.header {
+    background: transparent;
+    font-weight: bold;
+    color: #f6ecec;
+}
+
+.header div {
+    color: #f6ecec;
+}
+
+.list-row span,
+.list-header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* ── Buttons ── */
+#addItemBtn {
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border: solid white;
+    border-radius: 6px;
+    background: #b43b3b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
+#addItemBtn:hover {
+    background: white;
+    color: #b43b3b;
+}
+
+.edit-btn {
+    background: #b43b3b;
+    color: white;
+    border: solid #b43b3b;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+}
+
+.remove-btn {
+    background: white;
+    color: #b43b3b;
+    border: solid #b43b3b;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.ConfirmBtn {
+    background: #b43b3b;
+    color: white;
+    border: solid #b43b3b;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
+.remove-btn:hover{
+
+    background-color: #b43b3b;
+    color: white;
+}
+
+.edit-btn:hover{
+
+    background-color: white;
+    color: #b43b3b;
+}
+
+.ConfirmBtn:hover {
+    background: white;
+    color: #b43b3b;
+}
+
+.CancelBtn {
+    background: white;
+    color: #b43b3b;
+    border: solid #b43b3b;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
+.CancelBtn:hover {
+    background: #b43b3b;
+    color: white;
+}
+
+/* ── Category items in modal ── */
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.delete-cat-btn {
+    background: white;
+    color: #b43b3b;
+    border: solid #b43b3b;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.delete-cat-btn:hover {
+    background: #b43b3b;
+    color: white;
+}
+
+/* ── Modals ── */
+#add-modal,
+#edit-modal,
+#delete-modal,
+#manage-categories-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 380px;
+    animation: slideUp 0.25s ease;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: "Montserrat", sans-serif;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sort-bar {
+    width: 900px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sort-dropdown-wrapper {
+    position: relative;
+}
+
+.sort-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border: 2px solid #b43b3b;
+    border-radius: 20px;
+    color: #b43b3b;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sort-btn:hover {
+    background: #b43b3b;
+    color: white;
+}
+
+.sort-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    background: white;
+    border: 2px solid #b43b3b;
+    border-radius: 10px;
+    min-width: 180px;
+    z-index: 50;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.sort-dropdown.open {
+    display: block;
+}
+
+.sort-option {
+    padding: 10px 16px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #b43b3b;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.sort-option:hover,
+.sort-option.active {
+    background: #b43b3b;
+    color: white;
+}
+
+/* ── Back button ── */
+.back-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #b43b3b;
+    border: solid #b43b3b;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s, color 0.2s;
+    z-index: 1;
+}
+
+.back-btn:hover {
+    background: white;
+    color: #b43b3b;
+}
+
+.back-btn i {
+    font-size: 16px;
+}

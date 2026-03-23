@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TiNDA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/sales-style.css">
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">
+    <i class='bx bx-arrow-back'></i>
+    Back
+  </a>
+
+  <div class="sales-page">
+
+    <!-- Left: Category sidebar -->
+    <div class="category-sidebar">
+      <div class="sidebar-title">Categories</div>
+      <div id="category-nav"></div>
+    </div>
+
+    <!-- Middle: Products -->
+    <div class="product-area">
+      <div class="product-area-header">
+        <h1>Sales</h1>
+        <form action="" class="search-form">
+          <input type="text" placeholder="Search products..." class="search-input" />
+        </form>
+      </div>
+      <div id="product-list"></div>
+    </div>
+
+    <!-- Right: Cart -->
+    <div class="cart-section">
+      <div class="cart-title">Order Details</div>
+
+      <div class="cart-header">
+        <span class="header-name">Product</span>
+        <span class="header-qty">Qty</span>
+        <span class="header-subtotal">Subtotal</span>
+      </div>
+
+      <div id="cart-list"></div>
+
+      <div class="cart-total" id="cart-total">Total: ₱ 0</div>
+
+      <button id="cancelOrderBtn">Cancel Order</button>
+      <button id="completeOrderBtn" onclick="completeSale()">Complete Order</button>
+    </div>
+
+  </div>
+
+  <!-- Modals -->
+  <div id="cancel-modal" class="modal">
+    <div class="modal-content">
+      <h3>Cancel Order</h3>
+      <p>Are you sure you want to cancel this order?</p>
+      <div class="modal-buttons">
+        <button class="ConfirmBtn" onclick="confirmCancel()">Yes, Cancel</button>
+        <button class="CancelBtn" onclick="closeCancelModal()">Go Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="empty-cart-modal" class="modal">
+    <div class="modal-content">
+      <h3>Cart is Empty</h3>
+      <p>Please add items before proceeding.</p>
+      <div class="modal-buttons">
+        <button class="ConfirmBtn" onclick="closeEmptyCartModal()">OK</button>
+      </div>
+    </div>
+  </div>
+
+<div id="complete-modal" class="modal">
+    <div class="modal-content">
+        <h3>Complete Order</h3>
+        <p>How is this order being paid?</p>
+        <div class="modal-buttons">
+            <button class="ConfirmBtn" onclick="confirmCompleteSale('paid')">✓ Paid</button>
+            <button class="DebtBtn" onclick="openDebtCustomerModal()">⊘ Debt</button>
+            <button class="CancelBtn" onclick="closeCompleteModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="debt-customer-modal" class="modal">
+    <div class="modal-content">
+        <h3>Record as Debt</h3>
+        <p>Enter the customer's name:</p>
+        <input id="debt-customer-name" placeholder="Customer name"
+               style="width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-family:'Montserrat',sans-serif;">
+        <div class="modal-buttons">
+            <button class="ConfirmBtn" onclick="confirmCompleteSale('debt')">Confirm</button>
+            <button class="CancelBtn" onclick="closeDebtCustomerModal()">Back</button>
+        </div>
+    </div>
+</div>
+  <script src="javascript/sales.js"></script>
+</body>
+</html>

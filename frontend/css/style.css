@@ -1,0 +1,155 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff6ec;
+    font-family: "Montserrat", sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ── Layout ── */
+.container {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(173, 52, 62);
+    border-bottom-right-radius: 70px;
+    height: 100vh;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: 85px; 
+    transition: width 0.25s ease-in-out;
+}
+
+#toggler {
+    display: none;
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    padding: 1.75rem;
+    background-color: rgb(206, 112, 120);
+    transition: all 0.25s ease-in-out;
+    user-select: none;
+}
+
+.toggle-btn span {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    width: 100%;
+    flex: 1 1 auto;
+    transition: all 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.sidebar:has(#toggler:checked) {
+    width: 200px;
+}
+
+.sidebar #toggler:not(:checked) ~ .toggle-btn span {
+    display: none;
+}
+
+.sidebar #toggler:not(:checked) ~ .sidebar-nav .sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav .sidebar-item {
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Keeps icons centered when collapsed */
+    padding: 12px 0;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    width: 100%; /* Critical: must be 100% */
+}
+
+.sidebar:has(#toggler:checked) .sidebar-nav .sidebar-link {
+    justify-content: flex-start;
+    padding: 12px 20px;
+}
+
+.sidebar-link i {
+    font-size: 1.4em;
+    min-width: 28px;
+    text-align: center;
+    color: rgb(173, 52, 62);
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.sidebar-item span {
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left: 3px solid white;
+    width: 100%;
+}
+
+.sidebar-link:hover i {
+    background-color: white;
+    color: rgb(173, 52, 62);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 80px;
+    font-weight: 600;
+    color: #677757;
+    margin-bottom: 10px;
+}
+
+.sub {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}

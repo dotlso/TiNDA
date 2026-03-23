@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiNDA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_inventory.css">
+</head>
+<body>
+
+<a href="index.html" class="back-btn">
+    <i class='bx bx-arrow-back'></i>
+    Back
+</a>
+
+<div class="container">
+    <div class="main-content">
+        <h1 class="hd">Inventory</h1>
+
+        <form action="" class="search-form">
+            <i class='bx bx-search search-icon'></i>
+            <input type="text" placeholder="Search" class="search-input" />
+        </form>
+
+        <div class="sort-bar">
+            <div class="sort-dropdown-wrapper">
+                <button class="sort-btn" onclick="toggleSortDropdown()">
+                    <i class='bx bx-filter-alt'></i>
+                    Sort by Category
+                    <i class='bx bx-chevron-down'></i>
+                </button>
+                <div id="sort-dropdown" class="sort-dropdown">
+                    <div class="sort-option active" onclick="filterByCategory(null)">All</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="list-container">
+            <button id="addItemBtn" onclick="openAddModal()">Add Product</button>
+            <div class="list-row header">
+                <div>Name</div>
+                <div>Stock</div>
+                <div>Price</div>
+                <div></div>
+            </div>
+            <div id="inventory-list"></div>
+        </div>
+    </div>
+</div>
+
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <h3>Add Product</h3>
+        <input id="product-name" placeholder="Product Name">
+        <input id="product-price" type="number" placeholder="Price">
+        <input id="product-stock" type="number" placeholder="Stock">
+        <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+            <select id="add-category" style="flex:1; padding:10px; border-radius:6px; border:1px solid #ccc; font-family:'Montserrat',sans-serif;">
+                <option value="">-- No Category --</option>
+            </select>
+            <button class="ConfirmBtn" onclick="openAddCategoryInline('add')">+ New</button>
+        </div>
+        <div id="add-new-cat-box" style="display:none; margin-top:8px;">
+            <input id="add-new-cat-input" placeholder="New category name" style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; margin-bottom:8px;">
+            <div style="display:flex; gap:8px;">
+                <button class="ConfirmBtn" onclick="saveNewCategory('add')">Save</button>
+                <button class="CancelBtn" onclick="closeAddCategoryInline('add')">Cancel</button>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="ConfirmBtn" onclick="addProduct()">Add</button>
+            <button class="CancelBtn" onclick="closeAddModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <h2>Edit Product</h2>
+        <input id="edit-name" placeholder="Product Name">
+        <input id="edit-price" placeholder="Price">
+        <input id="edit-stock" placeholder="Stock">
+        <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+            <select id="edit-category" style="flex:1; padding:10px; border-radius:6px; border:1px solid #ccc; font-family:'Montserrat',sans-serif;">
+                <option value="">-- No Category --</option>
+            </select>
+            <button class="ConfirmBtn" onclick="openAddCategoryInline('edit')">+ New</button>
+        </div>
+        <div id="edit-new-cat-box" style="display:none; margin-top:8px;">
+            <input id="edit-new-cat-input" placeholder="New category name" style="width:100%; padding:8px; border-radius:6px; border:1px solid #ccc; margin-bottom:8px;">
+            <div style="display:flex; gap:8px;">
+                <button class="ConfirmBtn" onclick="saveNewCategory('edit')">Save</button>
+                <button class="CancelBtn" onclick="closeAddCategoryInline('edit')">Cancel</button>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="ConfirmBtn" onclick="saveEdit()">Save</button>
+            <button class="CancelBtn" onclick="closeEditModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+        <h3>Do you want to delete this item?</h3>
+        <div class="modal-buttons">
+            <button class="ConfirmBtn" onclick="removeProduct()">Remove</button>
+            <button class="CancelBtn" onclick="closeDeleteModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="manage-categories-modal" class="modal">
+    <div class="modal-content">
+        <h3>Manage Categories</h3>
+        <div id="category-list-modal"></div>
+        <div style="display:flex; gap:8px; margin-top:15px;">
+            <input id="new-category-name" placeholder="New category name" style="flex:1; padding:8px; border-radius:6px; border:1px solid #ccc;">
+            <button class="ConfirmBtn" onclick="addNewCategory()">Add</button>
+        </div>
+        <div class="modal-buttons">
+            <button class="CancelBtn" onclick="closeManageCategoriesModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="javascript/inventory.js"></script>
+</body>
+</html>
