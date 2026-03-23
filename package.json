@@ -20,7 +20,7 @@
     "appId": "com.TiNDA.app",
     "productName": "TiNDA",
     "win": {
-      "target": "portable",
+      "target": "nsis",
       "icon": "assets/icon.ico"
     },
     "directories": {
