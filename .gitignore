@@ -134,3 +134,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# TiNDA files
+dist/
+build/
+win-unpacked/
+builder-debug/
+*.log
+.DS_Store
+Thumbs.db
+.env
+database/*.db
