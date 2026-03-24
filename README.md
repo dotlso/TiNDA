@@ -91,7 +91,7 @@ TiNDA/
 ### Build Windows Installer
 
 ```bash
-npm run dist
+npm run build
 ```
 
 The `.exe` installer will be generated in the `/dist` folder.
